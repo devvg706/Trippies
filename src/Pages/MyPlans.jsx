@@ -7,9 +7,11 @@ import {
   FaCheckCircle,
   FaTimesCircle,
   FaRegClock,
+  FaTrash,
 } from "react-icons/fa";
 
 import { Highlighter } from "@/components/magicui/highlighter";
+import toast from "react-hot-toast";
 
 const MyPlans = () => {
   const location = useLocation();
@@ -88,9 +90,14 @@ const MyPlans = () => {
     console.log("Edit Trip:", trip);
     // Here you can open a modal for editing
   };
-
+  const handleDelete = (id) => {
+  const updatedTrips = trips.filter((trip) => trip.id !== id);
+  setTrips(updatedTrips);
+  localStorage.setItem("trips", JSON.stringify(updatedTrips));
+  toast.success("Trip deleted successfully 🗑️");
+};
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0f172a] via-[#111827] to-[#1e293b] p-8 relative">
+    <div className="min-h-screen mt-10 bg-gradient-to-b from-[#0f172a] via-[#111827] to-[#1e293b] p-8 relative">
       <h1 className="text-4xl font-extrabold text-center mb-10 bg-gradient-to-r from-purple-400 via-blue-400 to-pink-400 bg-clip-text text-transparent drop-shadow-md">
         My Trips
       </h1>
@@ -132,10 +139,17 @@ const MyPlans = () => {
                 {status.icon}
                 {status.label}
               </div>
+               <button
+    onClick={() => handleDelete(trip.id)}
+    className="p-2 rounded-full bg-white/10 text-gray-300 hover:bg-gradient-to-r hover:from-red-500 hover:to-pink-500 hover:text-white transition-all"
+  >
+    <FaTrash size={16} />
+  </button>
             </div>
           );
         })}
       </div>
+     
 
       {/* Floating Add Button */}
       <Link

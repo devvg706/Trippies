@@ -17,8 +17,7 @@ const AddTrip = () => {
     event.preventDefault();
     const newTrip = { ...data, id: Date.now() };
     navigate("/MyPlans", { state: { newTrip } });
-    toast.success("Trip added successfully!")
-
+    toast.success("Trip added successfully!🥳");
   };
 
   return (
@@ -59,8 +58,11 @@ const AddTrip = () => {
           <input
             type="date"
             {...register("startDate", { required: true })}
-            className="w-full px-3 py-2 rounded-md bg-black/40 text-gray-100 border border-gray-700 focus:ring-2 focus:ring-purple-500"
+             className="w-full px-3 py-2 rounded-md bg-black/40 text-gray-100 border border-gray-700 
+             focus:ring-2 focus:ring-purple-500 
+             [color-scheme:dark]"
           />
+          
           {errors.startDate && (
             <span className="text-red-400 text-sm">This field is required</span>
           )}
@@ -74,7 +76,9 @@ const AddTrip = () => {
           <input
             type="date"
             {...register("endDate", { required: true })}
-            className="w-full px-3 py-2 rounded-md bg-black/40 text-gray-100 border border-gray-700 focus:ring-2 focus:ring-purple-500"
+             className="w-full px-3 py-2 rounded-md bg-black/40 text-gray-100 border border-gray-700 
+             focus:ring-2 focus:ring-purple-500 
+             [color-scheme:dark]"
           />
           {errors.endDate && (
             <span className="text-red-400 text-sm">This field is required</span>

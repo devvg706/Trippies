@@ -19,29 +19,25 @@ const MyPlans = () => {
     return saved ? JSON.parse(saved) : MyTrips;
   });
 
-  // If we get a newTrip via navigation state, add it once (guard by id)
+  // Handle new trip from AddTrip
   useEffect(() => {
     const newTrip = location.state?.newTrip;
     if (!newTrip) return;
 
     setTrips((prev) => {
-      // guard: don't add if same id already exists
       const exists = prev.some((t) => t.id === newTrip.id);
       if (exists) {
-        // clear history state so we don't see it again
         window.history.replaceState({}, document.title);
         return prev;
       }
-
       const updated = [...prev, newTrip];
-      localStorage.setItem("trips", JSON.stringify(updated)); // persist immediately
-      // clear the location.state to avoid re-processing
+      localStorage.setItem("trips", JSON.stringify(updated));
       window.history.replaceState({}, document.title);
       return updated;
     });
   }, [location.state]);
 
-  // keep localStorage synced when trips change for any other reason
+  // Keep localStorage synced
   useEffect(() => {
     localStorage.setItem("trips", JSON.stringify(trips));
   }, [trips]);
@@ -88,8 +84,13 @@ const MyPlans = () => {
     }
   };
 
+  const handleEdit = (trip) => {
+    console.log("Edit Trip:", trip);
+    // Here you can open a modal for editing
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0f172a] via-[#111827] to-[#1e293b] p-8">
+    <div className="min-h-screen bg-gradient-to-b from-[#0f172a] via-[#111827] to-[#1e293b] p-8 relative">
       <h1 className="text-4xl font-extrabold text-center mb-10 bg-gradient-to-r from-purple-400 via-blue-400 to-pink-400 bg-clip-text text-transparent drop-shadow-md">
         My Trips
       </h1>
@@ -99,7 +100,7 @@ const MyPlans = () => {
           const status = getStatus(trip.status);
           return (
             <div
-              key={trip.id} // <-- use id instead of index
+              key={trip.id}
               className="relative rounded-2xl p-6 shadow-xl hover:shadow-[0_0_20px_rgba(139,92,246,0.6)] transition-all duration-300 border border-white/10 bg-white/5 backdrop-blur-lg"
             >
               {/* Edit Icon */}
@@ -126,7 +127,7 @@ const MyPlans = () => {
                 ₹{trip.price}
               </p>
 
-              {/* Status with Highlighter */}
+              {/* Status */}
               <div className="flex items-center gap-2 absolute bottom-4 right-4">
                 {status.icon}
                 {status.label}
@@ -136,8 +137,12 @@ const MyPlans = () => {
         })}
       </div>
 
-      <Link to="/AddTrip">
-        <span className="text-8xl text-white">Add New Trip</span>
+      {/* Floating Add Button */}
+      <Link
+        to="/AddTrip"
+        className="fixed bottom-8 right-8 flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:scale-105 transition-transform duration-300"
+      >
+        <span className="text-xl">➕</span> Add Trip
       </Link>
     </div>
   );

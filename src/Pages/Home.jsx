@@ -41,8 +41,8 @@ const Home = () => {
         <div className="relative h-[230px] w-full overflow-hidden">
           <VideoText src="https://cdn.magicui.design/ocean-small.webm">Trippies</VideoText>
         </div>
-        <p className="mt-[-50px] text-gray-400 text-lg text-center">
-          Plan your journey. Explore the world.
+        <p className="mt-[-50px] text-gray-400 text-lg font-bold text-center">
+          Dream. Plan. Explore.
         </p>
 
         {/* Main Globe */}

@@ -12,10 +12,11 @@ import {
 
 import { Highlighter } from "@/components/magicui/highlighter";
 import toast from "react-hot-toast";
+import EditPage from "./EditPage";
 
 const MyPlans = () => {
   const location = useLocation();
-
+  const [selectedTrip,setselectedTrip] = useState(null);
   const [trips, setTrips] = useState(() => {
     const saved = localStorage.getItem("trips");
     return saved ? JSON.parse(saved) : MyTrips;
@@ -99,7 +100,7 @@ const MyPlans = () => {
   return (
     <div className="min-h-screen mt-10 bg-gradient-to-b from-[#0f172a] via-[#111827] to-[#1e293b] p-8 relative">
       <h1 className="text-4xl font-extrabold text-center mb-10 bg-gradient-to-r from-purple-400 via-blue-400 to-pink-400 bg-clip-text text-transparent drop-shadow-md">
-        My Trips
+        Trips
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -112,7 +113,7 @@ const MyPlans = () => {
             >
               {/* Edit Icon */}
               <button
-                onClick={() => handleEdit(trip)}
+                onClick={() => setselectedTrip(trip)}
                 className="absolute top-4 right-4 p-2 rounded-full bg-white/10 text-gray-300 hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 hover:text-white transition-all"
               >
                 <FaEdit size={16} />
@@ -158,6 +159,16 @@ const MyPlans = () => {
       >
         <span className="text-xl">➕</span> Add Trip
       </Link>
+      {selectedTrip && <EditPage trip={selectedTrip} 
+       onSave={(updatedTrip) => {
+      setTrips((prev) =>
+        prev.map((t) => (t.id === updatedTrip.id ? updatedTrip : t))
+      );
+      localStorage.setItem("trips", JSON.stringify(trips));
+      setselectedTrip(null); // close editor after saving
+      toast.success("Trip updated successfully ✨");
+    }}
+    onCancel={() => setselectedTrip(null)}/>}
     </div>
   );
 };

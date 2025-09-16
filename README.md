@@ -27,13 +27,13 @@ Trippies is a modern travel planning app built with **React** and **Vite**. Effo
 ### Explore Destinations
 ![Destinations](screenshots/Screenshot%20(231).png)
 
-### Add a New Trip
+### Reviews
 ![Add Trip](screenshots/Screenshot%20(232).png)
 
-### Reviews
+### All Trips
 ![Reviews](screenshots/Screenshot%20(233).png)
 
-### Social Connect
+### Add a New Trip
 ![Social Orbit](screenshots/Screenshot%20(234).png)
 
 ### More UI Highlights

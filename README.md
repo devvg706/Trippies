@@ -1,12 +1,74 @@
-# React + Vite
+[![Trippies Banner](screenshots/home-globe.png)](screenshots/home-globe.png)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🌍 Trippies – Plan, Explore, Relive Your Journeys
 
-Currently, two official plugins are available:
+Trippies is a modern travel planning app built with **React** and **Vite**. Effortlessly discover destinations, organize trips, and share experiences with a beautiful, interactive UI.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Explore Destinations:** Interactive globe and image galleries.
+- **Smart Planning:** Add, edit, and manage trips with ease.
+- **Group Coordination:** Plan with friends and family.
+- **Trusted Reviews:** Real traveler feedback.
+- **Modern UI:** Responsive, animated, and visually stunning.
+
+---
+
+## 🚀 Screenshots
+
+### Home Page – Dream. Plan. Explore.
+![Home Globe](screenshots/home-globe.png)
+
+### Why Choose Trippies?
+![Features](screenshots/Screenshot%20(230).png)
+
+### Explore Destinations
+![Destinations](screenshots/Screenshot%20(231).png)
+
+### Add a New Trip
+![Add Trip](screenshots/Screenshot%20(232).png)
+
+### Reviews
+![Reviews](screenshots/Screenshot%20(233).png)
+
+### Social Connect
+![Social Orbit](screenshots/Screenshot%20(234).png)
+
+### More UI Highlights
+![More 1](screenshots/Screenshot%20(235).png)
+![More 2](screenshots/Screenshot%20(236).png)
+![More 3](screenshots/Screenshot%20(237).png)
+![More 4](screenshots/Screenshot%20(239).png)
+![More 5](screenshots/Screenshot%20(240).png)
+
+---
+
+## 🛠️ Tech Stack
+
+- **React 19**
+- **Vite**
+- **Tailwind CSS**
+- **Motion & Animations**
+- **React Router**
+- **Hot Toast Notifications**
+
+---
+
+## 📦 Getting Started
+
+```sh
+npm install
+npm run dev
+```
+
+---
+
+## 💡 About
+
+Trippies helps you plan, organize, and relive your adventures. Whether solo or with friends, make every journey memorable!
+
+---
+
+> _Made with ❤️ by passionate travelers._

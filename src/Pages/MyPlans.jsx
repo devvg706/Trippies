@@ -165,7 +165,7 @@ const MyPlans = () => {
         prev.map((t) => (t.id === updatedTrip.id ? updatedTrip : t))
       );
       localStorage.setItem("trips", JSON.stringify(trips));
-      setselectedTrip(null); // close editor after saving
+      setselectedTrip(null);
       toast.success("Trip updated successfully ✨");
     }}
     onCancel={() => setselectedTrip(null)}/>}

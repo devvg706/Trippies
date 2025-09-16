@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { MyTrips } from "@/data/Trip";
 import { Link, useLocation } from "react-router-dom";
-
+import SearchBar from "@/components/common/SearchBar";
 import {
   FaEdit,
   FaCheckCircle,
@@ -21,7 +21,7 @@ const MyPlans = () => {
     const saved = localStorage.getItem("trips");
     return saved ? JSON.parse(saved) : MyTrips;
   });
-
+ const [query,Setquery] = useState('');
   // Handle new trip from AddTrip
   useEffect(() => {
     const newTrip = location.state?.newTrip;
@@ -102,9 +102,9 @@ const MyPlans = () => {
       <h1 className="text-4xl font-extrabold text-center mb-10 bg-gradient-to-r from-purple-400 via-blue-400 to-pink-400 bg-clip-text text-transparent drop-shadow-md">
         Trips
       </h1>
-
+      <SearchBar Setquery={Setquery} query={query}/>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {trips.map((trip) => {
+        {trips.filter((country) => country.destination.toLowerCase().includes(query)).map((trip) => {
           const status = getStatus(trip.status);
           return (
             <div
